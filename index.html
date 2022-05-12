@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        font-size: 60px;
+        color: blue;
+      }
+    </style>
+    <title>Welcome to Cyram Bank</title>
+  </head>
+  <body onload="verify();">
+    <div class="title.">
+      <h1>Welcome to Cyram Bank</h1>
+      <h3>Select Option</h3>
+    </div>
+    <div class="buttons">
+      <button id="withdrawBtn" onclick="withdraw()">Withdraw</button>
+      <button id="balanceBtn" onclick="showBalance()">Balance</button><br />
+      <button id="depositBtn" onclick="doDeposit()">Deposit</button>
+      <button id="changePassBtn" onclick="changepass()">change Password</button>
+    </div>
+    <script>
+      let balance = 1000;
+
+      function changepass() {
+        let passcode = alert("you can't change your password");
+      }
+
+      function verify() {
+        var pin = prompt("Enter your ATM PIN");
+        if (pin != "1234") {
+          alert("Invalid pin. Please try again!");
+          verify();
+        }
+      }
+
+      function withdraw() {
+        let amountToWithdraw = prompt("How Much do you want to withdraw?");
+        if (amountToWithdraw > balance) {
+          alert(" you dont have enough balance!");
+        } else {
+          balance = balance - amountToWithdraw;
+          // balance -= amountToWithdraw;
+          alert("Your current balance is " + balance);
+        }
+      }
+
+      function showBalance() {
+        if (balance < 100) {
+          alert(
+            "Your balance is " +
+              balance +
+              " which is below $100 please add more money"
+          );
+        } else {
+          alert("Current Balance :" + balance);
+        }
+      }
+      changePassBtn.addEventListener("click", function () {
+        alert("you can't change your password");
+      });
+
+      function doDeposit() {
+        let depositmoney = prompt("deposit your money");
+        depositmoney = parseInt(depositmoney);
+        if (depositmoney > 1000) {
+          alert("you are putting too much money");
+        } else {
+          balance = balance + depositmoney;
+          alert("Current Balance balance " + balance);
+        }
+      }
+    </script>
+  </body>
+</html>
